@@ -15,21 +15,12 @@ class CharacterTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('a', strval($character));
     }
 
-    public function testTerminatorCharacter()
+    /**
+     * @dataProvider terminatorBarLayoutProvider
+     */
+    public function testBarLayouts($character, $expectedBarLayout)
     {
-        $expectedBarLayout = array(
-            array(1, true),
-            array(3, false),
-            array(1, true),
-            array(1, false),
-            array(3, true),
-            array(1, false),
-            array(3, true),
-            array(1, false),
-            array(1, true)
-        );
-
-        $character = new Character( chr(255) );
+        $character = new Character( $character );
         $bars = $character->getBars();
         $this->assertCount(count($expectedBarLayout), $bars);
 
@@ -44,5 +35,10 @@ class CharacterTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException( 'InvalidArgumentException' );
         new Character( chr(129) );
+    }
+
+    public function terminatorBarLayoutProvider()
+    {
+        return include __DIR__ . '/../fixtures/Character/bar-layouts.php';
     }
 }
