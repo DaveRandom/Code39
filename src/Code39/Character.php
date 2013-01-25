@@ -112,7 +112,7 @@
         /**
          * Bars that represent this character
          *
-         * @var array $bars
+         * @var Bar[] $bars
          */
         private $bars;
 
@@ -140,6 +140,7 @@
          * Sets the character
          *
          * @var string $char
+         * @throws \InvalidArgumentException
          */
         public function setChar($char) {
             $ord = ord($char);
@@ -188,7 +189,7 @@
         /**
          * Returns the character as an array of Bar objects
          *
-         * @return array
+         * @return Bar[]
          */
         public function getBars() {
             return $this->bars;
