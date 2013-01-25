@@ -18,7 +18,7 @@ class CharacterTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider terminatorBarLayoutProvider
      */
-    public function testCharacters($character, $expectedBarLayout)
+    public function testBarLayouts($character, $expectedBarLayout)
     {
         $character = new Character( $character );
         $bars = $character->getBars();
